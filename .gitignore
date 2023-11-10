@@ -1,0 +1,16 @@
+# folders
+.DS_Store
+.vscode
+
+# compile results(default value)
+a.out
+*.o
+*.a
+*.dSYM
+*.gch
+
+# execution file
+cub3D
+
+# swap file
+*.swp
