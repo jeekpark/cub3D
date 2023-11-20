@@ -6,7 +6,7 @@
 #    By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 04:11:59 by jihykim2          #+#    #+#              #
-#    Updated: 2023/11/17 14:29:39 by jihykim2         ###   ########.fr        #
+#    Updated: 2023/11/20 20:19:33 by jihykim2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,8 @@ EXEC_DIR	=
 SRCS_EXEC	=
 OBJS_EXEC	= $(addprefix $(EXEC_DIR), $(SRCS_EXEC:.c=.o))
 
-SRCS		= cub3d.c $(SRCS_PARSE) $(SRCS_EXEC) $(SRCS_BUILT) $(SRCS_UTILS)
-OBJS		= cub3d.o $(OBJS_PARSE) $(OBJS_EXEC) $(OBJS_BUILT) $(OBJS_UTILS)
+SRCS		= cub3d.c $(SRCS_PARSE) $(SRCS_EXEC)
+OBJS		= cub3d.o $(OBJS_PARSE) $(OBJS_EXEC)
 
 all		: $(NAME)
 
