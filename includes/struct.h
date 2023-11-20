@@ -6,7 +6,7 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:54:38 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/20 20:17:40 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:40:05 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@
 # define KEY_A		0
 # define KEY_S		1
 # define KEY_D		2
-
 # define KEY_LEFT	123
 # define KEY_RIGHT	124
+
+# define SCR_WIDTH	1600
+# define SCR_HEIGHT	900
 
 typedef struct	s_vec_f
 {
@@ -65,10 +67,13 @@ typedef struct s_game
 	int					map_width;	// parse: map's width
 	int					map_height;	// parse: map's height
 
-	struct s_vec_f		player;	// parse: player 위치 저장 (2차원 평면 상) 단, 이때, 초기 값은 0.5씩 더해주어야 함
+	struct s_vec_f		player;		// parse: player 위치 저장 (2차원 평면 상) 단, 이때, 초기 값은 0.5씩 더해주어야 함
 	struct s_vec_f		view_dir;	// parse: player의 보고 있는 방향
 	struct s_vec_f		plane_dir;	// parse: player의 보고 있는 방향에 수직인 평면 벡터 (N이라 가정할 때: x=0, y=0.66 이 비율은 고정(66도))
 	struct s_texture	img_info;	// parse: image, color에 대한 정보
+
+	void				*mlx_ptr;
+	void				*win_ptr;
 	struct s_data		north;
 	struct s_data		south;
 	struct s_data		west;
