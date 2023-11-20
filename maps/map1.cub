@@ -1,11 +1,10 @@
-NO texture/image1.xpm
-SO texture/image2.xpm
-WE texture/image3.xpm
-EA texture/image4.xpm
+NO texture/jihyun_in_barcelona.xpm
+SO texture/jihyun_in_granada.xpm
+WE texture/jiyun_in_paris.xpm
+EA texture/jiyun_in_venice.xpm
 
 F 80,188,223
 C 225,30,0
-
         1111111111111111111111111
         100000000011000000011101011 1 1  1 1 1 1
         1011000001110000000110001
