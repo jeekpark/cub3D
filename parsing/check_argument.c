@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_valid_file.c                                 :+:      :+:    :+:   */
+/*   check_argument.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 03:14:07 by jiyunlee          #+#    #+#             */
-/*   Updated: 2023/11/20 11:42:19 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/21 02:06:06 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ void	error_exit(char *str)
 	exit(EXIT_FAILURE);
 }
 
-void	check_valid_file(char **argv)
+void	check_argument(int argc, char **argv)
 {
 	char	*filename;
 	size_t	len;
 
+	if (argc != 2)
+		error_exit("Invalid argument");
 	filename = argv[1];
 	len = ft_strlen(filename);
 	if (len <= 4 || ft_strncmp(filename + len - 4, ".cub", 4) \
