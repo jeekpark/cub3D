@@ -6,7 +6,7 @@
 #    By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 04:11:59 by jihykim2          #+#    #+#              #
-#    Updated: 2023/11/21 03:12:59 by jiyunlee         ###   ########.fr        #
+#    Updated: 2023/11/21 03:30:33 by jiyunlee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRCS_PARSE	= check_argument.c \
 			  free_func.c \
 			  init_game_info.c \
 			  init_texture_info.c \
-			  init_map_info.c
+			  init_map_info.c \
+			  init_player_info.c
 OBJS_PARSE	= $(addprefix $(PARSE_DIR), $(SRCS_PARSE:.c=.o))
 
 EXEC_DIR	=

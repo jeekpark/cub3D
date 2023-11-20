@@ -6,7 +6,7 @@
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 04:10:38 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/21 03:16:29 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/21 03:30:28 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,8 @@ void	init_texture_info(char *filename, t_game *game, int *map_start_line);
 /* init_map_info.c */
 void	init_map_info(char *filename, t_game *game, int map_start_line);
 void	init_map(char *filename, t_game *game, int map_start_line);
+
+/* init_player_info.c */
+void	init_player_info(t_game *game);
 
 #endif
