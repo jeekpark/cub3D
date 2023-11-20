@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 04:10:38 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/17 12:17:31 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/20 09:29:38 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,9 @@
 # include <math.h>
 # include "./struct.h"
 
+/* [parsing] */
+/* check_valid_file.c */
+void	error_exit(char *str);
+void	check_valid_file(char **argv, int *fd);
 
 #endif

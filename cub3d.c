@@ -3,19 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 04:09:18 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/11 04:31:25 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/20 09:29:42 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/cub3d.h"
 
-int	main(int ac, char **av)
+int	main(int argc, char **argv)
 {
-	(void)ac;
-	(void)av;
+	// t_game	game;
+	int		fd;
+
+	if (argc != 2)
+		error_exit("Invalid argument");
+	check_valid_file(argv, &fd);
+	
+	// init_game_info(argv[1], &game);
 
 	return (0);
 }
