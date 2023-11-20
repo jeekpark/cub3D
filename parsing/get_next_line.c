@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jiyunlee <jiyunlee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:18:56 by jiyunlee          #+#    #+#             */
-/*   Updated: 2022/12/13 17:30:22 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:56:35 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../includes/cub3d.h"
 
 static char	*free_mem(char **ptr)
 {
