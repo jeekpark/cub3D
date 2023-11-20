@@ -6,7 +6,7 @@
 #    By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 04:11:59 by jihykim2          #+#    #+#              #
-#    Updated: 2023/11/20 03:21:36 by jiyunlee         ###   ########.fr        #
+#    Updated: 2023/11/20 19:07:27 by jiyunlee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ LIB_DIR		= ./libft/
 MLX_DIR		= ./mlx/
 
 PARSE_DIR	= ./parsing/
-SRCS_PARSE	= check_valid_file.c
+SRCS_PARSE	= check_valid_file.c \
+			  init_game_info.c \
+			  get_next_line.c
 OBJS_PARSE	= $(addprefix $(PARSE_DIR), $(SRCS_PARSE:.c=.o))
 
 EXEC_DIR	=

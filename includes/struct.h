@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:54:38 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/19 22:08:12 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:05:21 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 
 # define KEY_LEFT	123
 # define KEY_RIGHT	124
+
+# define BUFFER_SIZE 42
 
 typedef struct	s_vec_f
 {
