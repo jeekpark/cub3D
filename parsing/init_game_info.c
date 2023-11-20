@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_valid_file.c                                 :+:      :+:    :+:   */
+/*   init_game_info.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 03:14:07 by jiyunlee          #+#    #+#             */
-/*   Updated: 2023/11/20 11:42:19 by jiyunlee         ###   ########.fr       */
+/*   Created: 2023/11/20 09:26:56 by jiyunlee          #+#    #+#             */
+/*   Updated: 2023/11/20 20:29:33 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	error_exit(char *str)
+void	init_game_info(char *filename, t_game *game)
 {
-	ft_putendl_fd("Error", STDERR_FILENO);
-	ft_putendl_fd(str, STDERR_FILENO);
-	exit(EXIT_FAILURE);
-}
+	int		fd;
+	char	*line;
 
-void	check_valid_file(char **argv)
-{
-	char	*filename;
-	size_t	len;
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		error_exit("Invalid file");
+	while (1)
+	{
+		line = get_next_line(fd);
+		printf("서손 짱!\n");
+		if (!line)
+			break ;
+		
 
-	filename = argv[1];
-	len = ft_strlen(filename);
-	if (len <= 4 || ft_strncmp(filename + len - 4, ".cub", 4) \
-		|| filename[len - 5] == '/')
-		error_exit("Invalid filename");
+		free(line);
+	}
 }
