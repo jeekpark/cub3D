@@ -6,7 +6,7 @@
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 02:39:44 by jiyunlee          #+#    #+#             */
-/*   Updated: 2023/11/21 02:46:56 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/21 03:19:27 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	rgb_to_int(char *rgb)
 	num += ft_atoi(rgb_arr[1]) * 256;
 	num += ft_atoi(rgb_arr[2]);
 	// free rgb_arr => 안하면 leak
+	free_arr(rgb_arr);
 	return (num);
 }
 
@@ -74,7 +75,7 @@ void	init_texture_info(char *filename, t_game *game, int *map_start_line)
 	while (1)
 	{
 		line = get_next_line(fd);
-		if (!line || element == 6)
+		if (!line)
 			break ;
 		split_line = ft_split(line, ' ');
 		if (!split_line)
@@ -82,8 +83,11 @@ void	init_texture_info(char *filename, t_game *game, int *map_start_line)
 		init_texture(&game->img_info, split_line, &element);
 
 		// free split_line => 안하면 leak
+		free_arr(split_line);
 		free(line);
 		(*map_start_line)++;
+		if (element == 6)
+			break ;
 	}
 	if (close(fd) < 0)
 		exit(EXIT_FAILURE);
