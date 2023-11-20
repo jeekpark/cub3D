@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:54:38 by jihykim2          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/11/20 20:40:05 by jihykim2         ###   ########.fr       */
+=======
+/*   Updated: 2023/11/21 01:17:27 by jiyunlee         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +32,12 @@
 # define KEY_LEFT	123
 # define KEY_RIGHT	124
 
+<<<<<<< HEAD
 # define SCR_WIDTH	1600
 # define SCR_HEIGHT	900
+=======
+# define BUFFER_SIZE 42
+>>>>>>> main
 
 typedef struct	s_vec_f
 {
@@ -58,6 +66,13 @@ typedef struct s_texture
 	int		ceiling;	// ex) 0xFF0000
 }	t_texture;
 
+typedef enum e_direction
+{
+	NORTH = 2,
+	SOUTH,
+	WEST,
+	EAST,
+}	t_direction;
 
 /* [parse -> execute]: 넘겨줄 인자 */
 // 이들 모두 2차원 평면 상으로 가정하므로 값 방향 유의하기

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 04:11:59 by jihykim2          #+#    #+#              #
-#    Updated: 2023/11/20 20:19:33 by jihykim2         ###   ########.fr        #
+#    Updated: 2023/11/20 20:46:59 by jiyunlee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,10 @@ RM			= rm -f
 LIB_DIR		= ./libft/
 MLX_DIR		= ./mlx/
 
-PARSE_DIR	=
-SRCS_PARSE	=
+PARSE_DIR	= ./parsing/
+SRCS_PARSE	= check_valid_file.c \
+			  init_game_info.c \
+			  get_next_line.c
 OBJS_PARSE	= $(addprefix $(PARSE_DIR), $(SRCS_PARSE:.c=.o))
 
 EXEC_DIR	=
