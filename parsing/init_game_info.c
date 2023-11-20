@@ -6,7 +6,7 @@
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 09:26:56 by jiyunlee          #+#    #+#             */
-/*   Updated: 2023/11/21 01:54:13 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/21 02:16:47 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,25 @@ int	rgb_to_int(char *rgb)
 void	init_texture(t_texture *img_info, char **info, int *element)
 {
 	if (!ft_strcmp(info[0], "NO"))
-		img_info->north = ft_strdup(info[1]);
+	{
+		img_info->north = (char *)malloc(sizeof(char) * ft_strlen(info[1]));
+		ft_strlcpy(img_info->north, info[1], ft_strlen(info[1]));
+	}
 	else if (!ft_strcmp(info[0], "SO"))
-		img_info->south = ft_strdup(info[1]);
+	{
+		img_info->south = (char *)malloc(sizeof(char) * ft_strlen(info[1]));
+		ft_strlcpy(img_info->south, info[1], ft_strlen(info[1]));
+	}
 	else if (!ft_strcmp(info[0], "WE"))
-		img_info->west = ft_strdup(info[1]);
+	{
+		img_info->west = (char *)malloc(sizeof(char) * ft_strlen(info[1]));
+		ft_strlcpy(img_info->west, info[1], ft_strlen(info[1]));
+	}
 	else if (!ft_strcmp(info[0], "EA"))
-		img_info->east = ft_strdup(info[1]);
+	{
+		img_info->east = (char *)malloc(sizeof(char) * ft_strlen(info[1]));
+		ft_strlcpy(img_info->east, info[1], ft_strlen(info[1]));
+	}
 	else if (!ft_strcmp(info[0], "F"))
 		img_info->floor = rgb_to_int(info[1]);
 	else if (!ft_strcmp(info[0], "C"))
@@ -88,7 +100,7 @@ void	map_to_int(char *line, int *int_line)
 	while (line[i])
 	{
 		if (line[i] == ' ')
-			int_line[i] = -1;
+			int_line[i] = 8;
 		else if (line[i] == '1')
 			int_line[i] = 1;
 		else if (line[i] == 'N')
