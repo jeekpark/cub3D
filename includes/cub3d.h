@@ -6,7 +6,7 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 04:10:38 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/17 12:17:31 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/20 21:42:58 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@
 # include <math.h>
 # include "./struct.h"
 
+/* [texturing] */
+void	init_drawing_image(t_game *game);
 
 #endif
