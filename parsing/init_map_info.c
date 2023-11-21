@@ -6,7 +6,7 @@
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 02:56:15 by jiyunlee          #+#    #+#             */
-/*   Updated: 2023/11/22 00:54:34 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/22 01:14:53 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ void	map_to_int(int width, char *line, int *int_line)
 
 	i = 0;
 	while (i < width)
-		int_line[i++] = 7;	// -1로 바꿔주기
+		int_line[i++] = EMPTY;
 	i = 0;
 	while (line[i])
 	{
 		if (line[i] == '0')
-			int_line[i] = 0;
+			int_line[i] = SPACE;
 		else if (line[i] == '1')
-			int_line[i] = 1;
+			int_line[i] = WALL;
 		else if (line[i] == 'N')
 			int_line[i] = NORTH;
 		else if (line[i] == 'S')

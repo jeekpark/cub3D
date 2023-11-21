@@ -6,7 +6,7 @@
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 02:39:44 by jiyunlee          #+#    #+#             */
-/*   Updated: 2023/11/22 00:21:37 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/22 01:15:56 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	init_texture_info(char *filename, t_game *game, int *map_start_line)
 	char	*line;
 	char	**split_line;
 	int		element;
-	
+
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		error_exit("Invalid file");
@@ -96,7 +96,7 @@ void	init_texture_info(char *filename, t_game *game, int *map_start_line)
 		if (!line)
 			break ;
 		(*map_start_line)++;
-		line = delete_newline(line);	// line = "\n"이었다면 line = "\0"이 됨
+		line = delete_newline(line);
 		if (!ft_strcmp(line, "\0"))
 		{
 			free(line);
@@ -114,7 +114,7 @@ void	init_texture_info(char *filename, t_game *game, int *map_start_line)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		line = delete_newline(line);	// line = "\n"이었다면 line = "\0"이 됨
+		line = delete_newline(line);
 		if (ft_strcmp(line, "\0"))
 		{
 			free(line);
@@ -123,7 +123,6 @@ void	init_texture_info(char *filename, t_game *game, int *map_start_line)
 		free(line);
 		(*map_start_line)++;
 	}
-	// printf("%d\n", *map_start_line);
 	if (close(fd) < 0)
 		exit(EXIT_FAILURE);
 }

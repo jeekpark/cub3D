@@ -6,7 +6,7 @@
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 03:29:39 by jiyunlee          #+#    #+#             */
-/*   Updated: 2023/11/22 00:45:22 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/22 01:14:24 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	init_player_info(t_game *game)
 
 void	init_player_north(t_game *game, int x, int y)
 {
-	game->player = (t_vec_f) {x + 0.5, y + 0.5};
+	game->player = (t_vec_f){x + 0.5, y + 0.5};
 	game->view_dir.x = 0;
 	game->view_dir.y = 1;
 	game->plane_dir.x = 0.66;
@@ -59,7 +59,7 @@ void	init_player_north(t_game *game, int x, int y)
 
 void	init_player_south(t_game *game, int x, int y)
 {
-	game->player = (t_vec_f) {x + 0.5, y + 0.5};
+	game->player = (t_vec_f){x + 0.5, y + 0.5};
 	game->view_dir.x = 0;
 	game->view_dir.y = -1;
 	game->plane_dir.x = -0.66;
@@ -68,7 +68,7 @@ void	init_player_south(t_game *game, int x, int y)
 
 void	init_player_west(t_game *game, int x, int y)
 {
-	game->player = (t_vec_f) {x + 0.5, y + 0.5};
+	game->player = (t_vec_f){x + 0.5, y + 0.5};
 	game->view_dir.x = -1;
 	game->view_dir.y = 0;
 	game->plane_dir.x = 0;
@@ -77,7 +77,7 @@ void	init_player_west(t_game *game, int x, int y)
 
 void	init_player_east(t_game *game, int x, int y)
 {
-	game->player = (t_vec_f) {x + 0.5, y + 0.5};
+	game->player = (t_vec_f){x + 0.5, y + 0.5};
 	game->view_dir.x = 1;
 	game->view_dir.y = 0;
 	game->plane_dir.x = 0;

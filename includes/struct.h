@@ -6,7 +6,7 @@
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:54:38 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/21 01:17:27 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/22 01:15:03 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # define TRUE		1
 # define FALSE		0
 # define ERROR		"Error\n"
+
+# define SPACE		0
+# define WALL		1
+# define EMPTY		7		// -1로 바꾸기
 
 # define KEY_EXIT	17
 # define KEY_ESC	53
