@@ -6,7 +6,7 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 01:08:58 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/20 21:36:18 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:31:43 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,21 @@
 
 void	play_game(t_game *game)
 {
-	game->mlx_ptr = mlx_init();
-	game->win_ptr = mlx_new_window(game->mlx_ptr, SCR_WIDTH, SCR_HEIGHT, \
-					"jiji-cub3D");
-	init_drawing_image(game);
-	mlx_loop_hook(game->mlx_ptr, &draw_into_screen, game);
+	init_mlx(game);
+	mlx_loop_hook(game->mlx_ptr, &raycast_to_screen_3d_image, game);
 	mlx_hook(game->win_ptr, KEY_ACT, 0, &key_press, game);
 	mlx_loop(game->mlx_ptr);
 }
 
-int	draw_into_screen(t_game *game)
+int	raycast_to_screen_3d_image(t_game *game)
 {
-	t_data	screen;
+	int	screen_x;	// 0 < x < screen_width
+
+	drawing_background(game);
+	screen_x = 0;
+	while (screen_x < SCR_WIDTH)
+	{
+		calculate_vector_in_image(game, screen_x);
+		find_wall_from_player(game);
+	}
 }
