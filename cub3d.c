@@ -6,7 +6,7 @@
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 04:09:18 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/21 03:26:46 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/21 20:25:31 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 {
 	t_game	*game;
 
-	atexit(leaks);
+	// atexit(leaks);
 	check_argument(argc, argv);
 	game = ft_calloc(1, sizeof(t_game));
 	init_game_info(argv[1], game);
@@ -35,8 +35,8 @@ int	main(int argc, char **argv)
 	}
 	printf("\n");
 	printf("player: (%f, %f)\n", game->player.x, game->player.y);
-	printf("player: (%f, %f)\n", game->view_dir.x, game->view_dir.y);
-	printf("player: (%f, %f)\n", game->plane_dir.x, game->plane_dir.y);
+	printf("view_dir: (%f, %f)\n", game->view_dir.x, game->view_dir.y);
+	printf("plane_dir: (%f, %f)\n\n", game->plane_dir.x, game->plane_dir.y);
 
 	free_data(game);
 	return (0);
