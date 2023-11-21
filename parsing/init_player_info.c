@@ -6,7 +6,7 @@
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 03:29:39 by jiyunlee          #+#    #+#             */
-/*   Updated: 2023/11/21 03:44:38 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/22 00:45:22 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,19 @@ void	init_player_east(t_game *game, int x, int y);
 
 void	init_player_info(t_game *game)
 {
-	int		x;
-	int		y;
+	int	player;
+	int	x;
+	int	y;
 
+	player = 0;
 	y = 0;
 	while (y < game->map_height)
 	{
 		x = 0;
 		while (x < game->map_width)
 		{
+			if (NORTH <= game->map[y][x] && game->map[y][x] <= EAST)
+				player++;
 			if (game->map[y][x] == NORTH)
 				init_player_north(game, x, y);
 			else if (game->map[y][x] == SOUTH)
@@ -40,6 +44,8 @@ void	init_player_info(t_game *game)
 		}
 		y++;
 	}
+	if (player != 1)
+		error_exit("Invalid map");
 }
 
 void	init_player_north(t_game *game, int x, int y)
