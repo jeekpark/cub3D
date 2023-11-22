@@ -6,7 +6,7 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:54:38 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/23 02:37:45 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/23 03:16:57 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 
 # define N_OR_S		1
 # define W_OR_E		0
+# define SPACE		0
+# define WALL		1
+# define EMPTY		7		// -1로 바꾸기
 
 # define KEY_EXIT	17
 # define KEY_ESC	53
@@ -33,7 +36,8 @@
 
 # define SCR_WIDTH	1600
 # define SCR_HEIGHT	900
-# define BUFFER_SIZE 42
+// # define BUFFER_SIZE 42
+# define BUFFER_SIZE 1
 
 typedef struct s_vec_f
 {
@@ -94,6 +98,18 @@ typedef struct s_raycast
 
 	t_image	*wall_data;		// copy address of t_game's t_texture
 }	t_raycast;
+
+typedef struct s_texture_flag
+{
+	int	count;
+	int	north;
+	int	south;
+	int	west;
+	int	east;
+	int	floor;
+	int	ceiling;
+}	t_texture_flag;
+
 
 /* [parse -> execute]: 넘겨줄 인자 */
 // 이들 모두 2차원 평면 상으로 가정하므로 값 방향 유의하기

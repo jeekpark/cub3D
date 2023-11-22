@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_valid_file.c                                 :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 03:14:07 by jiyunlee          #+#    #+#             */
-/*   Updated: 2023/11/20 11:42:19 by jiyunlee         ###   ########.fr       */
+/*   Created: 2023/11/23 01:13:12 by jiyunlee          #+#    #+#             */
+/*   Updated: 2023/11/23 01:15:40 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,28 @@ void	error_exit(char *str)
 	exit(EXIT_FAILURE);
 }
 
-void	check_valid_file(char **argv)
+char	*delete_newline(char *line)
 {
-	char	*filename;
+	char	*str;
 	size_t	len;
 
-	filename = argv[1];
-	len = ft_strlen(filename);
-	if (len <= 4 || ft_strncmp(filename + len - 4, ".cub", 4) \
-		|| filename[len - 5] == '/')
-		error_exit("Invalid filename");
+	len = ft_strlen(line);
+	if (line[len - 1] != '\n')
+		return (line);
+	str = (char *)malloc(sizeof(char) * len);
+	if (!str)
+		exit(EXIT_FAILURE);
+	ft_strlcpy(str, line, len);
+	free(line);
+	return (str);
+}
+
+char	*gnl_no_newline(int fd)
+{
+	char	*line;
+
+	line = get_next_line(fd);
+	if (!line)
+		return (NULL);
+	return (delete_newline(line));
 }

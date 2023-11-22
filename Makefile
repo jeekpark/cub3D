@@ -6,14 +6,14 @@
 #    By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 04:11:59 by jihykim2          #+#    #+#              #
-#    Updated: 2023/11/20 20:46:59 by jiyunlee         ###   ########.fr        #
+#    Updated: 2023/11/23 01:49:53 by jiyunlee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= cub3D
 
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror #-fsanitize=address
 MLIB		= -L$(MLX_DIR) -lmlx -Imlx -framework Cocoa -framework Metal -framework MetalKit -framework QuartzCore
 # MLIB		= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 RM			= rm -f
@@ -22,9 +22,16 @@ LIB_DIR		= ./libft/
 MLX_DIR		= ./mlx/
 
 PARSE_DIR	= ./parsing/
-SRCS_PARSE	= check_valid_file.c \
+SRCS_PARSE	= check_argument.c \
 			  init_game_info.c \
-			  get_next_line.c
+			  init_content_info.c \
+			  init_texture_info.c \
+			  init_map_info.c \
+			  check_valid_map.c \
+			  init_player_info.c \
+			  get_next_line.c \
+			  free_func.c \
+			  utils.c
 OBJS_PARSE	= $(addprefix $(PARSE_DIR), $(SRCS_PARSE:.c=.o))
 
 EXEC_DIR	=
@@ -37,7 +44,7 @@ OBJS		= cub3d.o $(OBJS_PARSE) $(OBJS_EXEC)
 all		: $(NAME)
 
 %.o		: %.c
-	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME)	: $(OBJS)
 	@$(MAKE) -C $(LIB_DIR)

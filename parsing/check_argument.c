@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game_info.c                                   :+:      :+:    :+:   */
+/*   check_argument.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 09:26:56 by jiyunlee          #+#    #+#             */
-/*   Updated: 2023/11/23 01:30:08 by jiyunlee         ###   ########.fr       */
+/*   Created: 2023/11/20 03:14:07 by jiyunlee          #+#    #+#             */
+/*   Updated: 2023/11/23 01:14:56 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	init_game_info(char *filename, t_game *game)
+void	check_argument(int argc, char **argv)
 {
-	int	map_start_line;
+	char	*filename;
+	size_t	len;
 
-	map_start_line = 0;
-	init_content_info(filename, game, &map_start_line);
-	init_map_info(filename, game, map_start_line);
-	init_map(filename, game, map_start_line);
-	check_valid_map(game);
-	init_player_info(game);
+	if (argc != 2)
+		error_exit("Invalid argument");
+	filename = argv[1];
+	len = ft_strlen(filename);
+	if (len <= 4 || ft_strncmp(filename + len - 4, ".cub", 4) \
+		|| filename[len - 5] == '/')
+		error_exit("Invalid filename");
 }
