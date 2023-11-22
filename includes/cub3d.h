@@ -6,7 +6,7 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 04:10:38 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/21 14:47:33 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/22 16:07:28 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 
 /* [texturing] */
 void	init_mlx(t_game *game);
+void	calculate_vector_in_image(t_game *game, int screen_x);
+void	calculate_length_of_ray(t_game *game);
+void	calculate_length_of_wall(t_game *game);
 
 /* [parsing] */
 /* check_valid_file.c */
