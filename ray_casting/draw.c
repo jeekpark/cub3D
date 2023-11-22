@@ -6,11 +6,14 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 17:25:35 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/23 02:46:29 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/23 04:42:45 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+int	get_color_in_texture(t_image *wall, int tex_pos, int texture_x);
+void	my_mlx_pixel_put(t_image *img, int x, int y, int color);
 
 void	draw_background(t_game *game)
 {
@@ -27,6 +30,7 @@ void	draw_background(t_game *game)
 		while (screen_y < SCR_HEIGHT)
 			my_mlx_pixel_put(&game->screen, screen_x, screen_y++, \
 				game->img_info.floor);
+		screen_x++;
 	}
 }
 
@@ -43,29 +47,28 @@ void	draw_wall(t_game *game, int screen_x)
 	tex_pos = (ray->draw_start - SCR_HEIGHT / 2 + \
 		ray->wall_length_in_screen / 2) * ratio;
 
-	// texture_x: from hit_point(ratio)
+	// texture_x: 'real pixel value at x-dir' from hit_point(ratio)
 	texture_x = (int)(ray->hit_point * (double)ray->wall_data->width);
-	if (ray->side == W_OR_E && ray->ray_dir.x > 0)
-		texture_x = 0;////////////////////////////////////////////////
+	if ((ray->side == W_OR_E && ray->ray_dir.x > 0) || \
+		(ray->side == N_OR_S && ray->ray_dir.y < 0))
+		texture_x = ray->wall_data->width - texture_x - 1;
 
 	// draw wall
 	screen_y = ray->draw_start;
 	while (screen_y < ray->draw_end)
 		my_mlx_pixel_put(&game->screen, screen_x, screen_y++, \
-			get_color_in_texture(ray->wall_data, tex_pos, ray->hit_point));
+			get_color_in_texture(ray->wall_data, tex_pos, texture_x));
 }
 
-int	get_color_in_texture(t_image *wall, int tex_pos, int hit_point)
+int	get_color_in_texture(t_image *wall, int tex_pos, int texture_x)
 {
-	int	texture_x;
-	int	texture_y;
-	int	color;
+	char	*color;
+	int		texture_y;
 
-	texture_x = (int)(hit_point * (double)wall->width);
 	texture_y = (int)tex_pos & (wall->height - 1);
 	color = wall->addr + (texture_y * wall->size_line + \
 		texture_x * (wall->bpp / 8));
-	return (color);
+	return (*(unsigned int *)color);
 }
 
 void	my_mlx_pixel_put(t_image *img, int x, int y, int color)
