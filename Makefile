@@ -6,7 +6,7 @@
 #    By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 04:11:59 by jihykim2          #+#    #+#              #
-#    Updated: 2023/11/22 00:48:06 by jiyunlee         ###   ########.fr        #
+#    Updated: 2023/11/22 14:06:22 by jiyunlee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		= cub3D
 
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
-MLIB		= -L$(MLX_DIR) -lmlx -Imlx -framework Cocoa -framework Metal -framework MetalKit -framework QuartzCore
+# MLIB		= -L$(MLX_DIR) -lmlx -Imlx -framework Cocoa -framework Metal -framework MetalKit -framework QuartzCore
 # MLIB		= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 RM			= rm -f
 
@@ -46,17 +46,17 @@ all		: $(NAME)
 
 $(NAME)	: $(OBJS)
 	@$(MAKE) -C $(LIB_DIR)
-	@$(MAKE) -j 1 -C $(MLX_DIR) 2>/dev/null
-	@echo $(YELLOW) "✭	[ mlx ]		Ready to use MiniLibX" $(RESET)
+#	@$(MAKE) -j 1 -C $(MLX_DIR) 2>/dev/null
+#	@echo $(YELLOW) "✭	[ mlx ]		Ready to use MiniLibX" $(RESET)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIB_DIR) -lft $(MLIB)
-	@install_name_tool -change libmlx.dylib mlx/libmlx.dylib $(NAME)
+#	@install_name_tool -change libmlx.dylib mlx/libmlx.dylib $(NAME)
 	@echo $(GREEN) "⚡︎	[ cub3D ]	Ready to run cub3D" $(RESET)
 
 clean	:
 	@$(MAKE) -C $(LIB_DIR) clean
 	@echo $(YELLOW) "✭	[ libft ]	Removed Object files" $(RESET)
-	@$(MAKE) -C $(MLX_DIR) clean
-	@echo $(YELLOW) "✭	[ mlx ]		Removed Object files" $(RESET)
+#	@$(MAKE) -C $(MLX_DIR) clean
+#	@echo $(YELLOW) "✭	[ mlx ]		Removed Object files" $(RESET)
 	@$(RM) $(OBJS)
 	@echo $(GREEN) "⚡︎	[ cub3D ]	Removed Object files" $(RESET)
 
@@ -64,7 +64,7 @@ fclean	:
 	@$(MAKE) clean
 	@$(RM) $(LIB_DIR)libft.a
 	@echo $(YELLOW) "✭	[ libft ]	Removed libft.a" $(RESET)
-	@echo $(YELLOW) "✭	[ mlx ]		Removed mlx" $(RESET)
+#	@echo $(YELLOW) "✭	[ mlx ]		Removed mlx" $(RESET)
 	@$(RM) $(NAME)
 	@echo $(GREEN) "⚡︎	[ cub3D ]	Removed cub3D" $(RESET)
 

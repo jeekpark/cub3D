@@ -6,7 +6,7 @@
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:54:38 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/22 01:15:03 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/22 08:27:51 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,18 @@ typedef enum e_direction
 	WEST,
 	EAST,
 }	t_direction;
+
+typedef struct s_texture_flag
+{
+	int	count;
+	int	north;
+	int	south;
+	int	west;
+	int	east;
+	int	floor;
+	int	ceiling;
+}	t_texture_flag;
+
 
 /* [parse -> execute]: 넘겨줄 인자 */
 // 이들 모두 2차원 평면 상으로 가정하므로 값 방향 유의하기
