@@ -26,11 +26,11 @@ void	calculate_length_of_wall(t_game *game)
 		ray->draw_end = SCR_HEIGHT - 1;
 
 	if (ray->side == W_OR_E && ray->ray_dir.x > 0)		// EAST
-		ray->wall_type = EAST;
+		ray->wall_data = &game->east;
 	else if (ray->side == W_OR_E && ray->ray_dir.x < 0)	// WEST
-		ray->wall_type = WEST;
+		ray->wall_data = &game->west;
 	else if (ray->side == N_OR_S && ray->ray_dir.y > 0)	// NORTH
-		ray->wall_type = NORTH;
+		ray->wall_data = &game->north;
 	else if (ray->side == N_OR_S && ray->ray_dir.y < 0)	// SOUTH
-		ray->wall_type = SOUTH;
+		ray->wall_data = &game->south;
 }
