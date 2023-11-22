@@ -6,7 +6,7 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:54:38 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/23 03:30:15 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/23 04:43:34 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # define EMPTY			-1		// -1로 바꾸기
 
 /* screen size*/
-# define SCR_WIDTH		1600	// screen 값 -> 변경 가능
-# define SCR_HEIGHT		900
+# define SCR_WIDTH		400	// screen 값 -> 변경 가능
+# define SCR_HEIGHT		300
 
 /* hit direction */
 # define N_OR_S			1
