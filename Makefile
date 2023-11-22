@@ -6,14 +6,14 @@
 #    By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 04:11:59 by jihykim2          #+#    #+#              #
-#    Updated: 2023/11/22 14:06:22 by jiyunlee         ###   ########.fr        #
+#    Updated: 2023/11/23 00:40:22 by jiyunlee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= cub3D
 
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror #-fsanitize=address
 # MLIB		= -L$(MLX_DIR) -lmlx -Imlx -framework Cocoa -framework Metal -framework MetalKit -framework QuartzCore
 # MLIB		= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 RM			= rm -f
@@ -26,6 +26,7 @@ SRCS_PARSE	= check_argument.c \
 			  get_next_line.c \
 			  free_func.c \
 			  init_game_info.c \
+			  init_content_info.c \
 			  init_texture_info.c \
 			  init_map_info.c \
 			  check_valid_map.c \
@@ -36,13 +37,13 @@ EXEC_DIR	=
 SRCS_EXEC	=
 OBJS_EXEC	= $(addprefix $(EXEC_DIR), $(SRCS_EXEC:.c=.o))
 
-SRCS		= cub3d.c $(SRCS_PARSE) $(SRCS_EXEC)
-OBJS		= cub3d.o $(OBJS_PARSE) $(OBJS_EXEC)
+SRCS		= cub3d.c $(SRCS_PARSE) #$(SRCS_EXEC)
+OBJS		= cub3d.o $(OBJS_PARSE) #$(OBJS_EXEC)
 
 all		: $(NAME)
 
 %.o		: %.c
-	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME)	: $(OBJS)
 	@$(MAKE) -C $(LIB_DIR)

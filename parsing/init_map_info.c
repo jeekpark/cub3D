@@ -6,7 +6,7 @@
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 02:56:15 by jiyunlee          #+#    #+#             */
-/*   Updated: 2023/11/22 11:49:20 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/23 00:00:48 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	init_map_info(char *filename, t_game *game, int map_start_line)
 	while (1)
 	{
 		line = get_next_line(fd);
+		// printf("line: %s", line);
 		if (!line)
 			break ;
 		line = delete_newline(line);
@@ -95,10 +96,13 @@ void	init_map(char *filename, t_game *game, int map_start_line)
 		free(get_next_line(fd));
 	game->map = ft_calloc(game->map_height, sizeof(int *));
 	i = 0;
+	printf("map_height: %d\n", game->map_height);
 	while (i < game->map_height)
 	{
 		line = get_next_line(fd);
+		// printf("line: %s", line);
 		line = delete_newline(line);
+		// printf("delete line: %s\n", line);
 		game->map[i] = ft_calloc(game->map_width, sizeof(int));
 		if (!game->map[i])
 			exit(EXIT_FAILURE);
@@ -108,5 +112,7 @@ void	init_map(char *filename, t_game *game, int map_start_line)
 	}
 	if (close(fd) < 0)
 		exit(EXIT_FAILURE);
+	printf("reverse start\n");
 	reverse_y_value(game);
+	printf("reverse end\n");
 }

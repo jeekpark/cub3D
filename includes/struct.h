@@ -6,7 +6,7 @@
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:54:38 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/22 08:27:51 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/22 22:12:16 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define KEY_LEFT	123
 # define KEY_RIGHT	124
 
-# define BUFFER_SIZE 42
+# define BUFFER_SIZE 1
 
 typedef struct	s_vec_f
 {
