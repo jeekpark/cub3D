@@ -6,7 +6,7 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:28:41 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/21 22:29:16 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/22 03:43:58 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,4 @@ void	find_wall_from_player(t_game *game)
 		if (game->map[ray->map_pos.y][ray->map_pos.x] != 0)
 			break ;
 	}
-
-
 }
