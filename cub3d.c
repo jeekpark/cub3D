@@ -6,7 +6,7 @@
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 04:09:18 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/23 00:08:38 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/23 01:41:41 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 {
 	t_game	*game;
 
-	atexit(leaks); //
+	// atexit(leaks); //
 	check_argument(argc, argv);
 	game = ft_calloc(1, sizeof(t_game));
 	init_game_info(argv[1], game);

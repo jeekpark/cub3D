@@ -6,7 +6,7 @@
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 02:39:44 by jiyunlee          #+#    #+#             */
-/*   Updated: 2023/11/23 00:41:10 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/23 01:32:29 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,21 +68,21 @@ int	init_color_info(char *rgb_str)
 	return (rgb_int);
 }
 
-void	init_texture_info(t_texture *img_info, char **info, t_texture_flag *flag)
+void	init_texture_info(t_texture *img_info, char **info, t_texture_flag *f)
 {
 	if (!info[0] || !info[1] || info[2])
 		error_exit("Invalid texture information");
-	if (!ft_strcmp(info[0], "NO") && !flag->north++ && ++flag->count)
+	if (!ft_strcmp(info[0], "NO") && !f->north++ && ++f->count)
 		img_info->north = ft_strdup(info[1]);
-	else if (!ft_strcmp(info[0], "SO") && !flag->south++ && ++flag->count)
+	else if (!ft_strcmp(info[0], "SO") && !f->south++ && ++f->count)
 		img_info->south = ft_strdup(info[1]);
-	else if (!ft_strcmp(info[0], "WE") && !flag->west++ && ++flag->count)
+	else if (!ft_strcmp(info[0], "WE") && !f->west++ && ++f->count)
 		img_info->west = ft_strdup(info[1]);
-	else if (!ft_strcmp(info[0], "EA") && !flag->east++ && ++flag->count)
+	else if (!ft_strcmp(info[0], "EA") && !f->east++ && ++f->count)
 		img_info->east = ft_strdup(info[1]);
-	else if (!ft_strcmp(info[0], "F") && !flag->floor++ && ++flag->count)
+	else if (!ft_strcmp(info[0], "F") && !f->floor++ && ++f->count)
 		img_info->floor = init_color_info(info[1]);
-	else if (!ft_strcmp(info[0], "C") && !flag->ceiling++ && ++flag->count)
+	else if (!ft_strcmp(info[0], "C") && !f->ceiling++ && ++f->count)
 		img_info->ceiling = init_color_info(info[1]);
 	else
 		error_exit("Invalid information");

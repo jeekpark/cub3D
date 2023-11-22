@@ -6,7 +6,7 @@
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 09:26:56 by jiyunlee          #+#    #+#             */
-/*   Updated: 2023/11/23 00:36:20 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/23 01:30:08 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	init_game_info(char *filename, t_game *game)
 
 	map_start_line = 0;
 	init_content_info(filename, game, &map_start_line);
-	printf("map_start_line: %d\n", map_start_line); //
 	init_map_info(filename, game, map_start_line);
 	init_map(filename, game, map_start_line);
 	check_valid_map(game);
