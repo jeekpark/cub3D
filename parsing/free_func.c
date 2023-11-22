@@ -6,7 +6,7 @@
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 03:12:22 by jiyunlee          #+#    #+#             */
-/*   Updated: 2023/11/21 23:22:05 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/23 01:39:54 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,21 @@ void	free_arr(char **arr)
 	free(arr);
 }
 
-void	free_arr_int(int **arr)
+void	free_str_arr(char *str, char **arr)
 {
-	int	idx;
+	free(str);
+	free_arr(arr);
+}
+
+void	free_arr_int(int **arr, int idx)
+{
+	int	i;
 
 	if (arr == NULL)
 		return ;
-	idx = 0;
-	while (arr[idx])
-		free(arr[idx++]);
+	i = 0;
+	while (i < idx)
+		free(arr[i++]);
 	free(arr);
 }
 
@@ -46,7 +52,7 @@ void	free_texture(t_texture texture)
 
 void	free_data(t_game *game)
 {
-	free_arr_int(game->map);
+	free_arr_int(game->map, game->map_height);
 	free_texture(game->img_info);
 	free(game);
 }
