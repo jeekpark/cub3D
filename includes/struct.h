@@ -6,7 +6,7 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:54:38 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/23 10:35:03 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/23 11:17:15 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ typedef struct s_raycast
 	t_vec_i	step_dir;
 
 	int		side;
-	int		perp_wall_dist;
+	double	perp_wall_dist;
 	int		wall_length_in_screen;
 	int		draw_start;
 	int		draw_end;
