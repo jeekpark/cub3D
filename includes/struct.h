@@ -6,7 +6,7 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:54:38 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/23 11:17:15 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:28:59 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,14 @@
 # define KEY_LEFT		123
 # define KEY_RIGHT		124
 
+// # define LEFT			1
+// # define RIGHT			2
+// # define FRONT			3
+// # define BACK			4
+
 /* speed */
 # define MOVE_SPEED		0.05	// moving speed (고정 상수)
-# define ROTATE_SPEED	0.05	// rotating speed (pi/180으로 진행되기도 함)
+# define ROTATE_SPEED	0.5	// rotating speed (pi/180으로 진행되기도 함)
 
 /* parsing data */
 typedef enum e_direction

@@ -6,7 +6,7 @@
 #    By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 04:11:59 by jihykim2          #+#    #+#              #
-#    Updated: 2023/11/23 04:31:53 by jihykim2         ###   ########.fr        #
+#    Updated: 2023/11/23 19:34:44 by jihykim2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,11 +37,15 @@ OBJS_PARSE	= $(addprefix $(PARSE_DIR), $(SRCS_PARSE:.c=.o))
 EXEC_DIR	= ./ray_casting/
 SRCS_EXEC	= play_game.c \
 			  init_mlx.c \
+			  key_hook.c \
+			  rotate.c \
+			  move.c \
 			  calculate_vector_in_image.c \
 			  find_wall_from_player.c \
 			  calculate_length_of_ray.c \
 			  calculate_length_of_wall.c \
-			  draw.c
+			  draw.c \
+			  exit_game.c
 OBJS_EXEC	= $(addprefix $(EXEC_DIR), $(SRCS_EXEC:.c=.o))
 
 SRCS		= cub3d.c $(SRCS_PARSE) $(SRCS_EXEC)
