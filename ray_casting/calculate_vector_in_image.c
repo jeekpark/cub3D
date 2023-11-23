@@ -6,7 +6,7 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:36:18 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/21 16:16:32 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/23 11:28:44 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	calculate_vector_in_image(t_game *game, int screen_x)
 {
 	t_raycast	*ray;
-	int			camera_x;
+	double		camera_x;
 
 	ray = &game->ray_info;
 	camera_x = 2 * screen_x / (double)SCR_WIDTH - 1;
