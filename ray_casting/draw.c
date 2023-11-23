@@ -6,7 +6,7 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 17:25:35 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/23 06:26:10 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/23 14:12:08 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ int	get_color_in_texture(t_image *texture, int tex_pos, int texture_x)
 	char	*color;
 	int		texture_y;
 
-	texture_y = (int)(tex_pos & (texture->height - 1));
+	// texture_y = (int)(tex_pos & (texture->height - 1));
+	texture_y = tex_pos % texture->height;
 	color = texture->addr + (texture_y * texture->size_line + \
 		texture_x * (texture->bpp / 8));
 	return (*(unsigned int *)color);
