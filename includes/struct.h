@@ -6,7 +6,7 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:54:38 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/23 04:43:34 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/23 10:35:03 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@
 /* map(wall or not) */
 # define SPACE			0
 # define WALL			1
-# define EMPTY			-1		// -1로 바꾸기
+# define EMPTY			-1
 
 /* screen size*/
-# define SCR_WIDTH		400	// screen 값 -> 변경 가능
-# define SCR_HEIGHT		300
+# define SCR_WIDTH		1200	// screen 값 -> 변경 가능
+# define SCR_HEIGHT		800
 
 /* hit direction */
 # define N_OR_S			1
@@ -38,6 +38,7 @@
 # define KEY_EXIT		17
 # define KEY_ESC		53
 # define KEY_ACT		2
+# define KEY_DEACT		3
 
 # define KEY_W			13
 # define KEY_A			0
@@ -104,6 +105,16 @@ typedef struct s_image
 	int		height;
 }	t_image;
 
+typedef struct s_key
+{
+	int	move_n;
+	int	move_s;
+	int	move_w;
+	int	move_e;
+	int	rotate_r;
+	int	rotate_l;
+}	t_key;
+
 typedef struct s_raycast
 {
 	t_vec_f	ray_dir;
@@ -146,6 +157,8 @@ typedef struct s_game
 	t_image		south;
 	t_image		west;
 	t_image		east;
+
+	t_key		key;
 
 }	t_game;
 

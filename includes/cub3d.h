@@ -6,7 +6,7 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 04:10:38 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/23 04:31:35 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/23 10:20:40 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,6 @@
 # include <fcntl.h>
 # include <math.h>
 # include "./struct.h"
-
-/* [texturing] */
-void	init_mlx(t_game *game);
-
-void	play_game(t_game *game);
-
-void	init_mlx(t_game *game);
-
-int		raycast_to_screen_3d_image(t_game *game);
-
-void	calculate_vector_in_image(t_game *game, int screen_x);
-void	find_wall_from_player(t_game *game);
-void	calculate_length_of_ray(t_game *game);
-void	calculate_length_of_wall(t_game *game);
-
-void	draw_background(t_game *game);
-void	draw_wall(t_game *game, int screen_x);
-
 
 /* [parsing] */
 /* check_valid_file.c */
@@ -74,5 +56,23 @@ void	check_valid_map(t_game *game);
 
 /* init_player_info.c */
 void	init_player_info(t_game *game);
+
+
+/* [texturing] */
+void	init_mlx(t_game *game);
+
+void	play_game(t_game *game);
+
+void	init_mlx(t_game *game);
+
+int		raycast_to_screen_3d_image(t_game *game);
+
+void	calculate_vector_in_image(t_game *game, int screen_x);
+void	find_wall_from_player(t_game *game);
+void	calculate_length_of_ray(t_game *game);
+void	calculate_length_of_wall(t_game *game);
+
+void	draw_background(t_game *game);
+void	draw_wall(t_game *game, int screen_x);
 
 #endif
