@@ -6,7 +6,7 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 01:08:58 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/23 10:18:34 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/23 14:17:57 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 void	play_game(t_game *game)
 {
-	printf("haha1\n");
 	init_mlx(game);
-	printf("haha2\n");
 	// mlx_hook(game->win_ptr, KEY_ACT)
 	mlx_loop_hook(game->mlx_ptr, &raycast_to_screen_3d_image, game);
 	mlx_loop(game->mlx_ptr);
