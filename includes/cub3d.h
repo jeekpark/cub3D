@@ -6,7 +6,7 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 04:10:38 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/23 22:48:30 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/24 21:45:04 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <math.h>
-// # include <stddef.h>
 # include "./struct.h"
 
 /* [parsing] */
@@ -58,44 +57,57 @@ void	check_valid_map(t_game *game);
 /* init_player_info.c */
 void	init_player_info(t_game *game);
 
-
-/* [texturing] */
-void	init_mlx(t_game *game);
-
+/* [ray_casting] */
+/* play_game.c */
 void	play_game(t_game *game);
 
+/* init_mlx.c */
 void	init_mlx(t_game *game);
 
+/* init_mlx.c */
+void	init_mlx(t_game *game);
+
+/* key_hook.c */
 int		key_press(int keycode, t_game *game);
 int		key_release(int keycode, t_game *game);
 
-int		raycast_to_screen_3d_image(t_game *game);
-void	init_vector_by_keycode(t_game *game);
+/* render_image.c */
+int		render_image(t_game *game);
 
+/* move.c */
 void	move_player(t_game *game);
-void	rotate_player(t_game *game);
-void	rotate_vector(t_vec_f *vector, double degree);
 
+/* rotate.c */
+void	rotate_player(t_game *game);
+
+/* calculate_vector_in_image.c */
 void	calculate_vector_in_image(t_game *game, int screen_x);
+
+/* find_wall_from_player.c */
 void	find_wall_from_player(t_game *game);
+
+/* calculate_length_of_ray.c */
 void	calculate_length_of_ray(t_game *game);
+
+/* calculate_length_of_wall.c */
 void	calculate_length_of_wall(t_game *game);
 
+/* draw_background.c */
 void	draw_background(t_game *game);
+
+/* draw_wall.c */
 void	draw_wall(t_game *game, int screen_x);
 
-int		exit_game(t_game *game);
-
-/**
- * @brief 숫자를 변환하는 함수입니다.
- * 
- * @param num 은 0 ~ in_max 사이의 값입니다.
- * @param in_max 0 ~ in_max 
- * @param out_max 
- * @return int 반환 값은 0 ~ in_max 사이의 수, num을 0 ~ out_max의 수로 변환합니다.
- */
+/* mapping_int.c */
 int		mapping_int(int num, int in_max, int out_max);
 
-void	my_mlx_pixel_put(t_image *img, int x, int y, int color);
+/* get_color_in_texture.c */
 int		get_color_in_texture(t_image *component, int x, int y);
+
+/* my_mlx_pixel_put.c */
+void	my_mlx_pixel_put(t_image *img, int x, int y, int color);
+
+/* exit_game.c */
+int		exit_game(t_game *game);
+
 #endif

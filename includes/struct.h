@@ -6,7 +6,7 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:54:38 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/24 17:09:00 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/24 21:50:38 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 /* macro instead of bool-type */
 # define TRUE			1
 # define FALSE			0
-# define ERROR			"Error\n"
 
 /* get_next_line buffer size */
 # define BUFFER_SIZE	1
@@ -27,7 +26,7 @@
 # define EMPTY			-1
 
 /* screen size*/
-# define SCR_WIDTH		1200	// screen 값 -> 변경 가능
+# define SCR_WIDTH		1200
 # define SCR_HEIGHT		800
 
 /* hit direction */
@@ -47,14 +46,9 @@
 # define KEY_LEFT		123
 # define KEY_RIGHT		124
 
-// # define LEFT			1
-// # define RIGHT			2
-// # define FRONT			3
-// # define BACK			4
-
 /* speed */
-# define MOVE_SPEED		0.05	// moving speed (고정 상수)
-# define ROTATE_SPEED	0.5		// rotating speed (pi/180으로 진행되기도 함)
+# define MOVE_SPEED		0.05
+# define ROTATE_SPEED	0.5
 
 /* parsing data */
 typedef enum e_direction
@@ -95,8 +89,8 @@ typedef struct s_texture
 	char	*south;
 	char	*west;
 	char	*east;
-	int		floor;		// ex) 0xFF0000
-	int		ceiling;	// ex) 0xFF0000
+	int		floor;
+	int		ceiling;
 }	t_texture;
 
 typedef struct s_image

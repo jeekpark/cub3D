@@ -6,20 +6,19 @@
 #    By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 04:11:59 by jihykim2          #+#    #+#              #
-#    Updated: 2023/11/24 17:04:10 by jihykim2         ###   ########.fr        #
+#    Updated: 2023/11/24 21:48:47 by jihykim2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= cub3D
 
 CC			= cc
-CFLAGS		= #-Wall -Wextra -Werror #-fsanitize=address
+CFLAGS		= -Wall -Wextra -Werror #-fsanitize=address
 # MLIB		= -L$(MLX_DIR) -lmlx -Imlx -framework Cocoa -framework Metal -framework MetalKit -framework QuartzCore
 MLIB		= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 RM			= rm -f
 
 LIB_DIR		= ./libft/
-# MLX_DIR		= ./mlx_mms/
 MLX_DIR		= ./mlx/
 
 PARSE_DIR	= ./parsing/
@@ -38,19 +37,20 @@ OBJS_PARSE	= $(addprefix $(PARSE_DIR), $(SRCS_PARSE:.c=.o))
 EXEC_DIR	= ./ray_casting/
 SRCS_EXEC	= play_game.c \
 			  init_mlx.c \
+			  draw_background.c \
 			  key_hook.c \
 			  rotate.c \
 			  move.c \
+			  render_image.c \
 			  calculate_vector_in_image.c \
 			  find_wall_from_player.c \
 			  calculate_length_of_ray.c \
 			  calculate_length_of_wall.c \
-			  draw.c \
-			  exit_game.c \
-				draw_background.c \
-				get_color_in_texture.c \
-				mapping_int.c \
-				my_mlx_pixel_put.c
+			  draw_wall.c \
+			  get_color_in_texture.c \
+			  mapping_int.c \
+			  my_mlx_pixel_put.c \
+			  exit_game.c
 
 OBJS_EXEC	= $(addprefix $(EXEC_DIR), $(SRCS_EXEC:.c=.o))
 

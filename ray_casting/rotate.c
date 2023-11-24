@@ -6,11 +6,13 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 03:15:56 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/23 19:16:14 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/24 21:24:37 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+static void	rotate_vector(t_vec_f *vector, double degree);
 
 void	rotate_player(t_game *game)
 {
@@ -26,7 +28,7 @@ void	rotate_player(t_game *game)
 	}
 }
 
-void	rotate_vector(t_vec_f *vector, double degree)
+static void	rotate_vector(t_vec_f *vector, double degree)
 {
 	t_vec_f	old_vector;
 	double	rad;
