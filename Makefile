@@ -6,14 +6,14 @@
 #    By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 04:11:59 by jihykim2          #+#    #+#              #
-#    Updated: 2023/11/23 19:34:44 by jihykim2         ###   ########.fr        #
+#    Updated: 2023/11/23 23:15:01 by jihykim2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= cub3D
 
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror #-fsanitize=address
+CFLAGS		= #-Wall -Wextra -Werror #-fsanitize=address
 MLIB		= -L$(MLX_DIR) -lmlx -Imlx -framework Cocoa -framework Metal -framework MetalKit -framework QuartzCore
 # MLIB		= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 RM			= rm -f
@@ -45,7 +45,12 @@ SRCS_EXEC	= play_game.c \
 			  calculate_length_of_ray.c \
 			  calculate_length_of_wall.c \
 			  draw.c \
-			  exit_game.c
+			  exit_game.c \
+				draw_background.c \
+				get_color_in_texture.c \
+				mapping_int.c \
+				my_mlx_pixel_put.c
+				
 OBJS_EXEC	= $(addprefix $(EXEC_DIR), $(SRCS_EXEC:.c=.o))
 
 SRCS		= cub3d.c $(SRCS_PARSE) $(SRCS_EXEC)

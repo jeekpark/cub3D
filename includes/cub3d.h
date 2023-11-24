@@ -6,7 +6,7 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 04:10:38 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/23 19:33:20 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/23 22:48:30 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,16 @@ void	draw_wall(t_game *game, int screen_x);
 
 int		exit_game(t_game *game);
 
+/**
+ * @brief 숫자를 변환하는 함수입니다.
+ * 
+ * @param num 은 0 ~ in_max 사이의 값입니다.
+ * @param in_max 0 ~ in_max 
+ * @param out_max 
+ * @return int 반환 값은 0 ~ in_max 사이의 수, num을 0 ~ out_max의 수로 변환합니다.
+ */
+int		mapping_int(int num, int in_max, int out_max);
+
+void	my_mlx_pixel_put(t_image *img, int x, int y, int color);
+int		get_color_in_texture(t_image *component, int x, int y);
 #endif
