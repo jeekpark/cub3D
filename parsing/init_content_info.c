@@ -6,13 +6,15 @@
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 00:39:56 by jiyunlee          #+#    #+#             */
-/*   Updated: 2023/11/23 01:38:19 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/23 21:38:58 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	init_content_info_2(int fd, t_texture_flag *flag, int *map_start_line);
+void	check_valid_texture_file(t_texture *img_info);
+void	init_content_info_2(t_texture_flag *flag, t_texture *img_info,
+			int fd, int *map_start_line);
 
 void	init_content_info(char *filename, t_game *game, int *map_start_line)
 {
@@ -23,7 +25,7 @@ void	init_content_info(char *filename, t_game *game, int *map_start_line)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		error_exit("Invalid file");
+		error_exit("Invalid map file");
 	texture_flag = ft_calloc(1, sizeof(t_texture_flag));
 	while (texture_flag->count < 6)
 	{
@@ -40,16 +42,18 @@ void	init_content_info(char *filename, t_game *game, int *map_start_line)
 		init_texture_info(&game->img_info, split_line, texture_flag);
 		free_str_arr(line, split_line);
 	}
-	init_content_info_2(fd, texture_flag, map_start_line);
+	init_content_info_2(texture_flag, &game->img_info, fd, map_start_line);
 }
 
-void	init_content_info_2(int fd, t_texture_flag *flag, int *map_start_line)
+void	init_content_info_2(t_texture_flag *flag, t_texture *img_info,
+								int fd, int *map_start_line)
 {
 	char	*line;
 
 	if (flag->count != 6)
 		error_exit("Invalid information");
 	free(flag);
+	check_valid_texture_file(img_info);
 	while (1)
 	{
 		line = gnl_no_newline(fd);
@@ -65,4 +69,22 @@ void	init_content_info_2(int fd, t_texture_flag *flag, int *map_start_line)
 	}
 	if (close(fd) < 0)
 		exit(EXIT_FAILURE);
+}
+
+void	check_valid_texture_file(t_texture *img_info)
+{
+	int		fd;
+
+	fd = open(img_info->north, O_RDONLY);
+	if (fd < 0 || close(fd) < 0)
+		error_exit("Invalid texture file");
+	fd = open(img_info->south, O_RDONLY);
+	if (fd < 0 || close(fd) < 0)
+		error_exit("Invalid texture file");
+	fd = open(img_info->west, O_RDONLY);
+	if (fd < 0 || close(fd) < 0)
+		error_exit("Invalid texture file");
+	fd = open(img_info->east, O_RDONLY);
+	if (fd < 0 || close(fd) < 0)
+		error_exit("Invalid texture file");
 }
