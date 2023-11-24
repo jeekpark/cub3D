@@ -6,11 +6,13 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 21:12:21 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/24 21:37:48 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/24 22:07:01 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+static void	_check_mlx_image(t_game *game);
 
 void	init_mlx(t_game *game)
 {
@@ -28,6 +30,7 @@ void	init_mlx(t_game *game)
 		game->img_info.west, &game->west.width, &game->west.height);
 	game->east.img = mlx_xpm_file_to_image(game->mlx_ptr, \
 		game->img_info.east, &game->east.width, &game->east.height);
+	_check_mlx_image(game);
 	game->north.addr = mlx_get_data_addr(game->north.img, &game->north.bpp, \
 		&game->north.size_line, &game->north.endian);
 	game->south.addr = mlx_get_data_addr(game->south.img, &game->south.bpp, \
@@ -38,4 +41,14 @@ void	init_mlx(t_game *game)
 		&game->east.size_line, &game->east.endian);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
 		game->north.img, 0, 0);
+}
+
+static void	_check_mlx_image(t_game *game)
+{
+	if (game->screen.img == NULL || \
+		game->north.img == NULL || \
+		game->south.img == NULL || \
+		game->west.img == NULL || \
+		game->east.img == NULL)
+		error_exit("Invalid xpm image");
 }
