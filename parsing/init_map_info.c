@@ -6,7 +6,7 @@
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 02:56:15 by jiyunlee          #+#    #+#             */
-/*   Updated: 2023/11/23 01:24:31 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/23 21:30:14 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_map_info(char *filename, t_game *game, int map_start_line)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		error_exit("Invalid file");
+		error_exit("Invalid map file");
 	while (map_start_line--)
 		free(get_next_line(fd));
 	while (1)
@@ -49,7 +49,7 @@ void	init_map(char *filename, t_game *game, int map_start_line)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		error_exit("Invalid file");
+		error_exit("Invalid map file");
 	while (map_start_line--)
 		free(get_next_line(fd));
 	game->map = ft_calloc(game->map_height, sizeof(int *));

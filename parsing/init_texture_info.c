@@ -6,39 +6,34 @@
 /*   By: jiyunlee <jiyunlee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 02:39:44 by jiyunlee          #+#    #+#             */
-/*   Updated: 2023/11/23 01:32:29 by jiyunlee         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:55:54 by jiyunlee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	only_digit(char *str)
+int	init_color_info(char *rgb_str);
+int	rgb_to_int(char *str);
+int	only_digit(char *str);
+
+void	init_texture_info(t_texture *img_info, char **info, t_texture_flag *f)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (FALSE);
-		i++;
-	}
-	return (TRUE);
-}
-
-int	rgb_to_int(char *str)
-{
-	int	num;
-
-	num = 0;
-	while (*str)
-	{
-		num = num * 10 + (*str - '0');
-		if (!(0 <= num && num <= 255))
-			error_exit("Invalid color information");
-		str++;
-	}
-	return (num);
+	if (!info[0] || !info[1] || info[2])
+		error_exit("Invalid texture information");
+	if (!ft_strcmp(info[0], "NO") && !f->north++ && ++f->count)
+		img_info->north = ft_strdup(info[1]);
+	else if (!ft_strcmp(info[0], "SO") && !f->south++ && ++f->count)
+		img_info->south = ft_strdup(info[1]);
+	else if (!ft_strcmp(info[0], "WE") && !f->west++ && ++f->count)
+		img_info->west = ft_strdup(info[1]);
+	else if (!ft_strcmp(info[0], "EA") && !f->east++ && ++f->count)
+		img_info->east = ft_strdup(info[1]);
+	else if (!ft_strcmp(info[0], "F") && !f->floor++ && ++f->count)
+		img_info->floor = init_color_info(info[1]);
+	else if (!ft_strcmp(info[0], "C") && !f->ceiling++ && ++f->count)
+		img_info->ceiling = init_color_info(info[1]);
+	else
+		error_exit("Invalid information");
 }
 
 int	init_color_info(char *rgb_str)
@@ -68,22 +63,31 @@ int	init_color_info(char *rgb_str)
 	return (rgb_int);
 }
 
-void	init_texture_info(t_texture *img_info, char **info, t_texture_flag *f)
+int	only_digit(char *str)
 {
-	if (!info[0] || !info[1] || info[2])
-		error_exit("Invalid texture information");
-	if (!ft_strcmp(info[0], "NO") && !f->north++ && ++f->count)
-		img_info->north = ft_strdup(info[1]);
-	else if (!ft_strcmp(info[0], "SO") && !f->south++ && ++f->count)
-		img_info->south = ft_strdup(info[1]);
-	else if (!ft_strcmp(info[0], "WE") && !f->west++ && ++f->count)
-		img_info->west = ft_strdup(info[1]);
-	else if (!ft_strcmp(info[0], "EA") && !f->east++ && ++f->count)
-		img_info->east = ft_strdup(info[1]);
-	else if (!ft_strcmp(info[0], "F") && !f->floor++ && ++f->count)
-		img_info->floor = init_color_info(info[1]);
-	else if (!ft_strcmp(info[0], "C") && !f->ceiling++ && ++f->count)
-		img_info->ceiling = init_color_info(info[1]);
-	else
-		error_exit("Invalid information");
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (FALSE);
+		i++;
+	}
+	return (TRUE);
+}
+
+int	rgb_to_int(char *str)
+{
+	int	num;
+
+	num = 0;
+	while (*str)
+	{
+		num = num * 10 + (*str - '0');
+		if (!(0 <= num && num <= 255))
+			error_exit("Invalid color information");
+		str++;
+	}
+	return (num);
 }
