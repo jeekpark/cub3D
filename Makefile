@@ -6,7 +6,7 @@
 #    By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 04:11:59 by jihykim2          #+#    #+#              #
-#    Updated: 2023/11/23 23:15:01 by jihykim2         ###   ########.fr        #
+#    Updated: 2023/11/24 17:04:10 by jihykim2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,12 @@ NAME		= cub3D
 
 CC			= cc
 CFLAGS		= #-Wall -Wextra -Werror #-fsanitize=address
-MLIB		= -L$(MLX_DIR) -lmlx -Imlx -framework Cocoa -framework Metal -framework MetalKit -framework QuartzCore
-# MLIB		= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+# MLIB		= -L$(MLX_DIR) -lmlx -Imlx -framework Cocoa -framework Metal -framework MetalKit -framework QuartzCore
+MLIB		= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 RM			= rm -f
 
 LIB_DIR		= ./libft/
+# MLX_DIR		= ./mlx_mms/
 MLX_DIR		= ./mlx/
 
 PARSE_DIR	= ./parsing/
@@ -50,7 +51,7 @@ SRCS_EXEC	= play_game.c \
 				get_color_in_texture.c \
 				mapping_int.c \
 				my_mlx_pixel_put.c
-				
+
 OBJS_EXEC	= $(addprefix $(EXEC_DIR), $(SRCS_EXEC:.c=.o))
 
 SRCS		= cub3d.c $(SRCS_PARSE) $(SRCS_EXEC)
