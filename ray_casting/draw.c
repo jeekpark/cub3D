@@ -6,81 +6,83 @@
 /*   By: jihykim2 <jihykim2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 17:25:35 by jihykim2          #+#    #+#             */
-/*   Updated: 2023/11/23 14:12:08 by jihykim2         ###   ########.fr       */
+/*   Updated: 2023/11/24 00:00:42 by jihykim2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	get_color_in_texture(t_image *wall, int tex_pos, int texture_x);
-void	my_mlx_pixel_put(t_image *img, int x, int y, int color);
-
-void	draw_background(t_game *game)
+static t_image	*_get_using_image(t_game *game)
 {
-	int	screen_x;
-	int	screen_y;
+	if (game->ray_info.side == W_OR_E && game->ray_info.ray_dir.x > 0)
+		return (&game->east);
+	else if (game->ray_info.side == W_OR_E && game->ray_info.ray_dir.x <= 0)
+		return (&game->west);
+	else if (game->ray_info.side == N_OR_S && game->ray_info.ray_dir.y > 0)
+		return (&game->north);
+	else
+		return (&game->south);
+}
 
-	screen_x = 0;
-	while (screen_x < SCR_WIDTH)
+static void	_wall_in_range(t_game *game, int screen_x, int size, int start_y)
+{
+	int		i;
+	int		color;
+	t_vec_i	texture_pixel;
+	t_image	*using_image;
+
+	i = 0;
+	using_image = _get_using_image(game);
+	while (i < size)
 	{
-		screen_y = 0;
-		while (screen_y < SCR_HEIGHT / 2)
-			my_mlx_pixel_put(&game->screen, screen_x, screen_y++, \
-				game->img_info.ceiling);
-		while (screen_y < SCR_HEIGHT)
-			my_mlx_pixel_put(&game->screen, screen_x, screen_y++, \
-				game->img_info.floor);
-		screen_x++;
+		texture_pixel.x = game->ray_info.hit_point * using_image->width;
+		texture_pixel.y = mapping_int(i, size, using_image->height);
+		color = get_color_in_texture(using_image, 
+				texture_pixel.x, texture_pixel.y);
+		my_mlx_pixel_put(&game->screen, screen_x, start_y + i, color);
+		i++;
+	}
+}
+
+static void	_wall_out_range(t_game *game, int screen_x, int size)
+{
+	int		i;
+	int		color;
+	t_vec_i	texture_pixel;
+	t_image	*using_image;
+
+	i = 0;
+	using_image = _get_using_image(game);
+	while (i < SCR_HEIGHT)
+	{
+		texture_pixel.x = game->ray_info.hit_point * using_image->width;
+		texture_pixel.y = mapping_int(i + (size / 2 - SCR_HEIGHT / 2),
+				size, using_image->height);
+		color = get_color_in_texture(using_image,
+				texture_pixel.x, texture_pixel.y);
+		my_mlx_pixel_put(&game->screen, screen_x, i, color);
+		i++;
 	}
 }
 
 void	draw_wall(t_game *game, int screen_x)
 {
 	t_raycast	*ray;
-	double		ratio;
-	double		tex_pos;
-	int			texture_x;
-	// int			texture_y;
-	int			screen_y;
+	int			size;
+	int			start_y;
 
 	ray = &game->ray_info;
-	ratio = (double)(ray->wall_data->height / ray->wall_length_in_screen);
-	tex_pos = (ray->draw_start - SCR_HEIGHT / 2 + \
-		ray->wall_length_in_screen / 2) * ratio;
-
-	// texture_x: 'real pixel value at x-dir' from hit_point(ratio)
-	texture_x = (int)(ray->hit_point * (double)ray->wall_data->width);
-	if ((ray->side == W_OR_E && ray->ray_dir.x > 0) || \
-		(ray->side == N_OR_S && ray->ray_dir.y < 0))
-		texture_x = ray->wall_data->width - texture_x - 1;
-
-	// draw wall
-	screen_y = ray->draw_start;
-	while (screen_y < ray->draw_end)
+	size = ray->wall_length_in_screen;
+	start_y = (SCR_HEIGHT / 2) - (size / 2);
+	if ((ray->side == W_OR_E && ray->ray_dir.x > 0)
+		|| (ray->side == N_OR_S && ray->ray_dir.y < 0))
+		ray->hit_point = 1 - ray->hit_point;
+	if (size < SCR_HEIGHT)
 	{
-		// texture_y = (int)()
-		my_mlx_pixel_put(&game->screen, screen_x, screen_y++, \
-			get_color_in_texture(ray->wall_data, tex_pos, texture_x));
-		tex_pos += ratio;
+		_wall_in_range(game, screen_x, size, start_y);
 	}
-}
-
-int	get_color_in_texture(t_image *texture, int tex_pos, int texture_x)
-{
-	char	*color;
-	int		texture_y;
-
-	// texture_y = (int)(tex_pos & (texture->height - 1));
-	texture_y = tex_pos % texture->height;
-	color = texture->addr + (texture_y * texture->size_line + \
-		texture_x * (texture->bpp / 8));
-	return (*(unsigned int *)color);
-}
-
-void	my_mlx_pixel_put(t_image *img, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = img->addr + (y * img->size_line + x * (img->bpp / 8));
-	*(unsigned int *)dst = color;
+	else
+	{
+		_wall_out_range(game, screen_x, size);
+	}
 }
